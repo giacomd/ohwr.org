@@ -30,7 +30,9 @@ class Page:
             ValueError: If writing the Hugo page to a file fails.
         """
         try:
-            front_matter = yaml.safe_dump(self.front_matter)
+            front_matter = yaml.safe_dump(
+                self.front_matter, allow_unicode=True,
+            )
         except yaml.YAMLError as yaml_error:
             raise ValueError(
                 'Failed to create YAML front matter:\n{0}'.format(yaml_error),

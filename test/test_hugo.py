@@ -43,7 +43,9 @@ class TestPage:
 
         sample_page.write("test_path.md")
 
-        mock_yaml_dump.assert_called_once_with(sample_page.front_matter)
+        mock_yaml_dump.assert_called_once_with(
+            sample_page.front_matter, allow_unicode=True,
+        )
         mock_file.assert_called_once_with("test_path.md", 'w')
         file_handle = mock_file()
         expected_content = (
